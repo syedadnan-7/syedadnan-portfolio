@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Syed Adnan Ahmed | Software Engineer Portfolio</title>
+    <!-- SEO and Social Sharing Meta Tags (CRITICAL UPDATE) -->
+    <meta name="description" content="Syed Adnan Ahmed is a Computer Science Engineer specializing in Full Stack Development (Java, J2EE, Spring) and Data Science/ML projects. View his portfolio, skills, and experience.">
+    <meta name="keywords" content="Syed Adnan Ahmed, Full Stack Developer, Data Scientist, Java, Python, IoT, Portfolio">
+    <meta name="author" content="Syed Adnan Ahmed">
+    
+    <!-- Open Graph (OG) Tags for LinkedIn/Facebook Share Previews -->
+    <meta property="og:title" content="Syed Adnan Ahmed | Full Stack & Data Science Portfolio">
+    <meta property="og:description" content="Computer Science Engineer specializing in Java Development and Machine Learning Projects.">
+    <meta property="og:image" content="https://placehold.co/1200x630/1f2937/34d399?text=Syed+Adnan+Ahmed+Portfolio"> <!-- Placeholder image URL -->
+    <meta property="og:type" content="website">
+
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Syed Adnan Ahmed | Full Stack & Data Science Portfolio">
+    <meta name="twitter:description" content="Computer Science Engineer specializing in Java Development and Machine Learning Projects.">
+
+    <!-- Load Tailwind CSS from CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Load Lucide Icons for modern icons -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <style>
+        /* Custom styles for dark mode and smooth scrolling offset */
+        html {
+            scroll-padding-top: 5rem; /* Offset for fixed header */
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Set base dark theme */
+        body {
+            background-color: #1a202c; /* Deep Charcoal */
+            color: #e2e8f0; /* Off-White */
+        }
+
+        /* Custom scrollbar for a sleek look */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #2c313a; /* Darker grey */
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #3a3f47;
+        }
+
+        /* Icon wrapper for proper display */
+        .icon-wrapper {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        /* Ensures sections take up minimum screen height */
+        section {
+            min-height: 100vh;
+        }
+
+        /* --- VISUAL DEPTH EFFECT --- */
+        .card-glow-effect {
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1), 0 0 40px rgba(52, 211, 163, 0.05) inset; 
+            transition: all 0.3s ease-in-out;
+        }
+        .card-glow-effect:hover {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -4px rgba(0, 0, 0, 0.3), 0 0 50px rgba(52, 211, 163, 0.2) inset;
+            border-color: #34d399; /* Teal-400 border glow */
+        }
+
+        /* --- ANIMATION KEYFRAMES --- */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .animated-section {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out; 
+        }
+        .animated-section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Hero Background Gradient Animation */
+        @keyframes hero-shift {
+            0% { background-position: 0% 50%; }
+            33% { background-position: 50% 100%; }
+            66% { background-position: 100% 0%; }
+            100% { background-position: 0% 50%; }
+        }
+        .hero-bg {
+            background: linear-gradient(-45deg, #1a202c, #1f2937, #374151, #1f2937, #1a202c);
+            background-size: 400% 400%;
+            animation: hero-shift 20s ease infinite;
+        }
+
+        /* Text Shimmer/Glow Animation */
+        @keyframes text-glow {
+            0%, 100% { text-shadow: 0 0 5px rgba(52, 211, 163, 0.2), 0 0 10px rgba(52, 211, 163, 0.1); }
+            50% { text-shadow: 0 0 8px rgba(52, 211, 163, 0.6), 0 0 15px rgba(52, 211, 163, 0.3); }
+        }
+        .text-shimmer {
+            animation: text-glow 4s ease-in-out infinite;
+        }
+
+        /* --- MODAL SPECIFIC STYLES --- */
+        .modal-overlay {
+            background-color: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(8px);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .modal-overlay.open {
+            opacity: 1;
+        }
+        .modal-content {
+            transform: translateY(50px);
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            opacity: 0;
+        }
+        .modal-overlay.open .modal-content {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-gray-100 antialiased">
+
+    <!-- Custom Alert Container for Copy Success -->
+    <div id="copyAlert" class="fixed top-4 left-1/2 transform -translate-x-1/2 z-[110] px-4 py-2 bg-teal-500 text-gray-900 rounded-lg shadow-xl opacity-0 transition-opacity duration-300">
+        Email copied to clipboard!
+    </div>
+
+    <!-- 
+        ============================================================
+        NAVIGATION BAR
+        ============================================================
+    -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-gray-900/95 backdrop-blur-md shadow-lg" role="banner">
+        <!-- SCROLL PROGRESS INDICATOR (NEW FEATURE) -->
+        <div id="progressBar" class="fixed top-0 left-0 h-1 bg-teal-500 z-[60]" style="width: 0%;"></div>
+
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" role="navigation" aria-label="Main Navigation">
+            <div class="flex items-center justify-between h-20">
+                <!-- RESTORED: Full Name in Header -->
+                <a href="#home" class="text-2xl font-extrabold text-teal-500 hover:text-teal-400 transition duration-300" aria-label="Go to Home section">Syed Adnan Ahmed</a>
+                <div class="flex space-x-4" role="menu">
+                    <a href="#about" role="menuitem" class="nav-link text-sm font-medium text-gray-300 hover:text-teal-500 transition duration-300 p-2 rounded-lg">About Me</a>
+                    <a href="#skills" role="menuitem" class="nav-link text-sm font-medium text-gray-300 hover:text-teal-500 transition duration-300 p-2 rounded-lg">Skills</a>
+                    <a href="#projects" role="menuitem" class="nav-link text-sm font-medium text-gray-300 hover:text-teal-500 transition duration-300 p-2 rounded-lg">Projects</a>
+                    <!-- CHANGED: Link from Resume to Experience -->
+                    <a href="#experience" role="menuitem" class="nav-link text-sm font-medium text-gray-300 hover:text-teal-500 transition duration-300 p-2 rounded-lg">Experience</a>
+                    <a href="#contact" role="menuitem" class="nav-link text-sm font-medium text-gray-300 hover:text-teal-500 transition duration-300 p-2 rounded-lg">Contact</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main role="main">
+        
+        <!-- 
+            ============================================================
+            1. HOME / HERO SECTION (Animated Background & Shimmer Text)
+            ============================================================
+        -->
+        <section id="home" class="hero-bg flex items-center justify-center pt-24 pb-12 text-center px-4 md:px-8">
+            <div class="max-w-4xl mx-auto animated-section" style="transition-delay: 0.1s;">
+                <!-- Profile Image Placeholder (Modern Circle) -->
+                <div class="mx-auto w-32 h-32 bg-gray-700 rounded-full flex items-center justify-center overflow-hidden mb-6 shadow-2xl border-4 border-teal-500/50 transform hover:scale-105 transition duration-500">
+                    <span class="text-4xl text-gray-400">SA</span>
+                </div>
+
+                <!-- Header (Shimmering Text) -->
+                <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight text-gray-50 mb-4 text-shimmer">
+                    Syed Adnan Ahmed
+                </h1>
+                
+                <!-- Tagline -->
+                <p class="text-xl sm:text-2xl font-light text-teal-300 mb-8">
+                    Computer Science Engineer
+                </p>
+
+                <!-- Call-to-Action (CTA) - NOW ONLY ONE BUTTON -->
+                <div class="flex justify-center">
+                    <a href="#projects" class="inline-flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-xl shadow-lg text-gray-900 bg-teal-500 hover:bg-teal-400 transition duration-300 transform hover:scale-105">
+                        <span class="icon-wrapper mr-2"><i data-lucide="code-slash" class="w-5 h-5"></i></span>
+                        View My Work
+                    </a>
+                </div>
+
+                <!-- Social Icons -->
+                <div class="mt-10 flex justify-center space-x-6">
+                    <a href="http://www.linkedin.com/in/syedadnanahmed" target="_blank" class="text-gray-400 hover:text-teal-500 transition duration-300 transform hover:scale-110" aria-label="LinkedIn Profile">
+                        <span class="icon-wrapper"><i data-lucide="linkedin" class="w-6 h-6"></i></span>
+                    </a>
+                    <!-- GitHub Link (Placeholder for now) -->
+                    <a href="#" target="_blank" class="text-gray-400 hover:text-teal-500 transition duration-300 transform hover:scale-110" aria-label="GitHub Profile">
+                        <span class="icon-wrapper"><i data-lucide="github" class="w-6 h-6"></i></span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 
+            ============================================================
+            2. ABOUT ME SECTION (Skill Callout Added/Un-hidden)
+            ============================================================
+        -->
+        <section id="about" class="py-20 px-4 md:px-8 bg-gray-800 border-t border-gray-700">
+            <div class="max-w-6xl mx-auto animated-section" style="transition-delay: 0.3s;">
+                <h2 class="text-4xl font-extrabold text-teal-500 mb-10 text-center">
+                    About Me
+                </h2>
+                <div class="grid md:grid-cols-3 gap-10 items-center">
+                    <div class="md:col-span-2 space-y-4 text-lg text-gray-300 leading-relaxed">
+                        <p>
+                            I am Syed Adnan Ahmed, a Computer Science graduate from VTU (2024) with rigorous training in Full Stack Development (Core Java, J2EE, SQL, Web Technologies, Frameworks) from JSpiders. 
+                        </p>
+                        <p>
+                            My experience is complemented by a hands-on internship in Data Science & Robotic Process Automation at EasiliTech Pvt. Ltd., where I built a Sentiment Analysis project using Python and machine learning algorithms to extract valuable business insights.
+                        </p>
+                        <p>
+                            Furthermore, my academic project on an IoT-based Dual Axis Solar Panel Tracking System showcased my ability to integrate hardware, cloud transmission, and real-time monitoring to maximize energy efficiency. I bring strong communication, teamwork, and problem-solving abilities, with a drive to learn and grow in dynamic environments.
+                        </p>
+                        <p class="font-semibold text-teal-400">
+                            I am actively seeking opportunities as a Full Stack Developer, Software Engineer, or Data Engineer to contribute my skills to real-world applications.
+                        </p>
+                    </div>
+                    <!-- SKILLS CALLOUT - NOW ALWAYS VISIBLE -->
+                    <div class="md:col-span-1 p-6 bg-gray-900 rounded-2xl shadow-2xl border border-teal-500/20 transform hover:translate-y-[-5px] transition duration-300 card-glow-effect">
+                        <div class="text-center">
+                            <span class="icon-wrapper"><i data-lucide="layers-3" class="w-10 h-10 text-teal-500 mx-auto mb-4"></i></span>
+                            <p class="text-xl font-bold mb-2">Key Domains</p>
+                            <ul class="text-sm space-y-3 text-gray-400 text-left mx-auto max-w-fit">
+                                <li class="flex items-center"><span class="icon-wrapper mr-2 text-teal-500"><i data-lucide="code" class="w-4 h-4"></i></span> Full Stack Development</li>
+                                <li class="flex items-center"><span class="icon-wrapper mr-2 text-teal-500"><i data-lucide="database" class="w-4 h-4"></i></span> Data Science & ML</li>
+                                <li class="flex items-center"><span class="icon-wrapper mr-2 text-teal-500"><i data-lucide="server" class="w-4 h-4"></i></span> Backend Systems</li>
+                                <li class="flex items-center"><span class="icon-wrapper mr-2 text-teal-500"><i data-lucide="sun" class="w-4 h-4"></i></span> IoT & Embedded Systems</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 
+            ============================================================
+            3. SKILLS SECTION (Reverted to Checkmark Lists)
+            ============================================================
+        -->
+        <section id="skills" class="py-20 px-4 md:px-8 border-t border-gray-700">
+            <div class="max-w-6xl mx-auto animated-section" style="transition-delay: 0.5s;">
+                <h2 class="text-4xl font-extrabold text-teal-500 mb-10 text-center">
+                    Technical Expertise
+                </h2>
+                <div class="grid md:grid-cols-3 gap-8">
+                    
+                    <!-- Languages -->
+                    <div class="bg-gray-800 p-6 rounded-2xl shadow-xl border border-gray-700 transition duration-300 transform hover:scale-[1.02] card-glow-effect">
+                        <h3 class="text-2xl font-semibold mb-4 text-teal-300 flex items-center">
+                            <span class="icon-wrapper mr-3"><i data-lucide="terminal" class="w-6 h-6"></i></span>
+                            Languages & Data
+                        </h3>
+                        <ul class="space-y-3 text-gray-300">
+                            <li class="flex items-center"><span class="icon-wrapper mr-2 text-teal-500"><i data-lucide="check-circle" class="w-4 h-4"></i></span> Core Java</li>
+                            <li class="flex items-center"><span class="icon-wrapper mr-2 text-teal-500"><i data-lucide="check-circle" class="w-4 h-4"></i></span> Python (Data Analysis)</li>
+                            <li class="flex items-center"><span class="icon-wrapper mr-2 text-teal-500"><i data-lucide="check-circle" class="w-4 h-4"></i></span> SQL (DQL, DDL, DML, DCL, TCL)</li>
+                            <li class="flex items-center"><span class="icon-wrapper mr-2 text-teal-500"><i data-lucide="check-circle" class="w-4 h-4"></i></span> C Programming</li>
+                        </ul>
+                    </div>
+
+                    <!-- Web Technologies -->
+                    <div class="bg-gray-800 p-6 rounded-2xl shadow-xl border border-gray-700 transition duration-300 transform hover:scale-[1.02] card-glow-effect">
+                        <h3 class="text-2xl font-semibold mb-4 text-teal-300 flex items-center">
+                            <span class="icon-wrapper mr-3"><i data-lucide="layout-grid" class="w-6 h-6"></i></span>
+                            Web & Frontend
+                        </h3>
+                        <ul class="space-y-3 text-gray-300">
+                            <li class="flex items-center"><span class="icon-wrapper mr-2 text-teal-500"><i data-lucide="check-circle" class="w-4 h-4"></i></span> HTML (Tags, Forms, Tables)</li>
+                            <li class="flex items-center"><span class="icon-wrapper mr-2 text-teal-500"><i data-lucide="check-circle" class="w-4 h-4"></i></span> CSS (Box/Flex model, Properties)</li>
+                            <li class="flex items-center"><span class="icon-wrapper mr-2 text-teal-500"><i data-lucide="check-circle" class="w-4 h-4"></i></span> JavaScript (DOM Manipulation)</li>
+                            <li class="flex items-center"><span class="icon-wrapper mr-2 text-teal-500"><i data-lucide="check-circle" class="w-4 h-4"></i></span> Bootstrap (Responsive UI)</li>
+                        </ul>
+                    </div>
+
+                    <!-- Frameworks & Tools -->
+                    <div class="bg-gray-800 p-6 rounded-2xl shadow-xl border border-gray-700 transition duration-300 transform hover:scale-[1.02] card-glow-effect">
+                        <h3 class="text-2xl font-semibold mb-4 text-teal-300 flex items-center">
+                            <span class="icon-wrapper mr-3"><i data-lucide="package" class="w-6 h-6"></i></span>
+                            Tools
+                        </h3>
+                        <ul class="space-y-3 text-gray-300">
+                            <li class="flex items-center"><span class="icon-wrapper mr-2 text-teal-500"><i data-lucide="check-circle" class="w-4 h-4"></i></span> Microsoft Office</li>
+                            <li class="flex items-center"><span class="icon-wrapper mr-2 text-teal-500"><i data-lucide="check-circle" class="w-4 h-4"></i></span> Data Entry</li>
+                            <li class="flex items-center"><span class="icon-wrapper mr-2 text-teal-500"><i data-lucide="check-circle" class="w-4 h-4"></i></span> Canva</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 
+            ============================================================
+            4. PROJECTS SECTION (Links changed to buttons)
+            ============================================================
+        -->
+        <section id="projects" class="py-20 px-4 md:px-8 bg-gray-800 border-t border-gray-700">
+            <div class="max-w-6xl mx-auto animated-section" style="transition-delay: 0.7s;">
+                <h2 class="text-4xl font-extrabold text-teal-500 mb-12 text-center">
+                    Projects
+                </h2>
+
+                <div class="space-y-12"> <!-- Added space-y-12 for spacing between projects -->
+                    <!-- Project Card 1: IOT Solar Tracker -->
+                    <div class="bg-gray-900 border border-teal-500/30 rounded-3xl overflow-hidden shadow-2xl p-6 md:p-10 transform hover:translate-y-[-8px] transition duration-300 card-glow-effect">
+                        <div class="grid md:grid-cols-2 gap-8 items-center">
+                            
+                            <!-- Project Visual (Uses object-contain to ensure the whole photo fits) -->
+                            <div class="w-full h-auto rounded-xl overflow-hidden shadow-lg border border-gray-700 p-2 bg-gray-900 flex justify-center items-center">
+                                <img 
+                                    src="https://i.ibb.co/xqxnkf1Q/dual-axis-solar-tracker-with-ldr.jpg" 
+                                    alt="Image of the IoT-Based Dual Axis Solar Panel Sun Tracking System project"
+                                    class="w-full h-full object-contain"
+                                >
+                            </div>
+
+                            <!-- Project Details -->
+                            <div class="space-y-4">
+                                <span class="text-sm font-medium text-teal-400 bg-teal-500/10 px-3 py-1 rounded-full">Final Year Project</span>
+                                <h3 class="text-3xl font-bold text-gray-50">
+                                    IOT-Based Solar Panel Sun Tracking System
+                                </h3>
+                                <p class="text-gray-300 leading-relaxed">
+                                    This innovative system was created to maximize solar energy efficiency by utilizing a Dual Axis mechanism that continuously adjusts panel orientation.
+                                </p>
+                                <ul class="list-disc list-inside space-y-2 text-gray-400 ml-4">
+                                    <li>Integrated weather sensors for optimal positioning.</li>
+                                    <li>Used Bluetooth and Wi-Fi for user interaction and remote monitoring.</li>
+                                    <li>Data transmission through the cloud for real-time energy generation analysis.</li>
+                                </ul>
+                                <button data-project-id="iot" class="view-project-btn mt-4 inline-flex items-center px-6 py-2 border border-transparent text-sm font-medium rounded-full text-gray-900 bg-teal-500 hover:bg-teal-400 transition duration-300 transform hover:scale-[1.05]">
+                                    <span class="icon-wrapper mr-2"><i data-lucide="git-branch" class="w-4 h-4"></i></span>
+                                    View Project Details
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project Card 2: Sentiment Analysis -->
+                    <div class="bg-gray-900 border border-teal-500/30 rounded-3xl overflow-hidden shadow-2xl p-6 md:p-10 transform hover:translate-y-[-8px] transition duration-300 card-glow-effect">
+                        <div class="grid md:grid-cols-2 gap-8 items-center">
+                            
+                            <!-- Project Details (Order-1 on desktop for alternating layout) -->
+                            <div class="space-y-4 md:order-1">
+                                <span class="text-sm font-medium text-teal-400 bg-teal-500/10 px-3 py-1 rounded-full">Data Science & ML</span>
+                                <h3 class="text-3xl font-bold text-gray-50">
+                                    Sentiment Analysis Engine
+                                </h3>
+                                <p class="text-gray-300 leading-relaxed">
+                                    Developed during the Data Science Internship, this project utilized Python and machine learning algorithms to interpret and classify sentiment from real-world business data.
+                                </p>
+                                <ul class="list-disc list-inside space-y-2 text-gray-400 ml-4">
+                                    <li>Employed machine learning algorithms for accurate sentiment classification.</li>
+                                    <li>Extracted actionable insights from unstructured business data.</li>
+                                    <li>Utilized Python for data preprocessing, modeling, and automation.</li>
+                                </ul>
+                                <button data-project-id="sentiment" class="view-project-btn mt-4 inline-flex items-center px-6 py-2 border border-transparent text-sm font-medium rounded-full text-gray-900 bg-teal-500 hover:bg-teal-400 transition duration-300 transform hover:scale-[1.05]">
+                                    <span class="icon-wrapper mr-2"><i data-lucide="bar-chart" class="w-4 h-4"></i></span>
+                                    View Project Details
+                                </button>
+                            </div>
+                            
+                            <!-- Project Visual -->
+                            <div class="w-full h-auto rounded-xl overflow-hidden shadow-lg border border-gray-700 p-2 bg-gray-900 flex justify-center items-center">
+                                <img 
+                                    src="https://i.ibb.co/gZBVdtV8/sentiment-analysis.jpg" 
+                                    alt="Image of the Sentiment Analysis Dashboard/Visualization"
+                                    class="w-full h-full object-contain"
+                                >
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 
+            ============================================================
+            5. EXPERIENCE & EDUCATION SECTION (NEW CARD LAYOUT)
+            ============================================================
+        -->
+        <section id="experience" class="py-20 px-4 md:px-8 border-t border-gray-700">
+            <div class="max-w-4xl mx-auto animated-section" style="transition-delay: 0.9s;">
+                <h2 class="text-4xl font-extrabold text-teal-500 mb-12 text-center">
+                    Experience & Education
+                </h2>
+
+                <div class="space-y-8">
+                    
+                    <!-- Work Experience Card -->
+                    <div class="p-6 bg-gray-900 rounded-xl shadow-lg border border-teal-500/30 transition duration-300 transform hover:translate-y-[-5px] card-glow-effect">
+                        <div class="grid md:grid-cols-4 gap-4 items-start">
+                            <!-- Date Column -->
+                            <div class="md:col-span-1">
+                                <p class="text-sm font-semibold uppercase tracking-wider text-teal-400">Aug 2023 – Sept 2023</p>
+                            </div>
+                            <!-- Content Column -->
+                            <div class="md:col-span-3">
+                                <h3 class="text-2xl font-bold text-gray-50 flex items-center mb-1">
+                                    <span class="icon-wrapper mr-2 text-teal-500"><i data-lucide="briefcase" class="w-5 h-5"></i></span>
+                                    Data Science & RPA Intern
+                                </h3>
+                                <p class="text-lg text-gray-300 mb-3">EasiliTech Pvt. Ltd., Bangalore</p>
+                                <ul class="list-disc list-inside space-y-1 text-gray-400 ml-4 text-sm">
+                                    <li>Applied machine learning algorithms with Python for data analysis and insights.</li>
+                                    <li>Developed a Sentiment Analysis project for real-world business applications.</li>
+                                    <li>Gained hands-on exposure to data preprocessing, automation, and visualization.</li>
+                                </ul>
+                                <a href="https://certificate.givemycertificate.com/c/73041f00-f4c7-4293-a3cc-5547dffa2abe" target="_blank" class="mt-3 inline-flex items-center text-sm text-teal-500 hover:text-teal-400 transition duration-300">
+                                    <span class="icon-wrapper mr-1"><i data-lucide="award" class="w-4 h-4"></i></span>
+                                    View Certificate
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- B.E. Education Card -->
+                    <div class="p-6 bg-gray-800 rounded-xl shadow-lg border border-gray-700 transition duration-300 transform hover:translate-y-[-5px] card-glow-effect">
+                        <div class="grid md:grid-cols-4 gap-4 items-start">
+                            <!-- Date Column -->
+                            <div class="md:col-span-1">
+                                <p class="text-sm font-semibold uppercase tracking-wider text-teal-400">June 2024</p>
+                            </div>
+                            <!-- Content Column -->
+                            <div class="md:col-span-3">
+                                <h3 class="text-2xl font-bold text-gray-50 flex items-center mb-1">
+                                    <span class="icon-wrapper mr-2 text-teal-500"><i data-lucide="graduation-cap" class="w-5 h-5"></i></span>
+                                    B.E. Computer Science
+                                </h3>
+                                <p class="text-lg text-gray-300">Visvesvaraya Technological University (VTU)</p>
+                                <p class="text-sm text-gray-400">CGPA: 6.1/10</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 12th PUC Education Card -->
+                    <div class="p-6 bg-gray-800 rounded-xl shadow-lg border border-gray-700 transition duration-300 transform hover:translate-y-[-5px] card-glow-effect">
+                        <div class="grid md:grid-cols-4 gap-4 items-start">
+                            <!-- Date Column -->
+                            <div class="md:col-span-1">
+                                <p class="text-sm font-semibold uppercase tracking-wider text-teal-400">June 2020</p>
+                            </div>
+                            <!-- Content Column -->
+                            <div class="md:col-span-3">
+                                <h3 class="text-2xl font-bold text-gray-50 flex items-center mb-1">
+                                    <span class="icon-wrapper mr-2 text-teal-500"><i data-lucide="graduation-cap" class="w-5 h-5"></i></span>
+                                    12th PUC
+                                </h3>
+                                <p class="text-lg text-gray-300">Department of Pre-University Education (DPUE), Karnataka</p>
+                                <p class="text-sm text-gray-400">Percentage: 55.16%</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 10th CBSE Education Card -->
+                    <div class="p-6 bg-gray-800 rounded-xl shadow-lg border border-gray-700 transition duration-300 transform hover:translate-y-[-5px] card-glow-effect">
+                        <div class="grid md:grid-cols-4 gap-4 items-start">
+                            <!-- Date Column -->
+                            <div class="md:col-span-1">
+                                <p class="text-sm font-semibold uppercase tracking-wider text-teal-400">June 2017</p>
+                            </div>
+                            <!-- Content Column -->
+                            <div class="md:col-span-3">
+                                <h3 class="text-2xl font-bold text-gray-50 flex items-center mb-1">
+                                    <span class="icon-wrapper mr-2 text-teal-500"><i data-lucide="graduation-cap" class="w-5 h-5"></i></span>
+                                    10th CBSE
+                                </h3>
+                                <p class="text-lg text-gray-300">Central Board of Secondary Education (CBSE)</p>
+                                <p class="text-sm text-gray-400">CGPA: 7.6/10</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- 
+            ============================================================
+            6. CONTACT SECTION (Dynamic Submission)
+            ============================================================
+        -->
+        <section id="contact" class="py-20 px-4 md:px-8 bg-gray-800 border-t border-gray-700">
+            <div class="max-w-4xl mx-auto animated-section" style="transition-delay: 1.1s;">
+                <h2 class="text-4xl font-extrabold text-teal-500 mb-12 text-center">
+                    Get In Touch
+                </h2>
+
+                <div class="grid md:grid-cols-2 gap-10">
+                    <!-- Contact Form (Uses FETCH for Dynamic Submission) -->
+                    <div class="bg-gray-900 p-8 rounded-2xl shadow-xl border border-teal-500/20 card-glow-effect">
+                        <h3 class="text-2xl font-bold mb-6 text-gray-50">Send a Message</h3>
+                        
+                        <!-- Formspree Integration (Functional) -->
+                        <!-- NOTE: Removed method/action attributes for JS fetch submission -->
+                        <form id="contactForm" class="space-y-4"> 
+                            <input type="hidden" name="_gotcha" style="display:none">
+
+                            <div>
+                                <label for="name" class="block text-sm font-medium text-gray-400">Name</label>
+                                <input type="text" id="name" name="Name" required class="mt-1 block w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-lg text-gray-100 focus:border-teal-500 focus:ring-teal-500 transition duration-300">
+                            </div>
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-gray-400">Email</label>
+                                <input type="email" id="email" name="Email" required class="mt-1 block w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-lg text-gray-100 focus:border-teal-500 focus:ring-teal-500 transition duration-300">
+                            </div>
+                            <div>
+                                <label for="message" class="block text-sm font-medium text-gray-400">Message</label>
+                                <textarea id="message" name="Message" rows="4" required class="mt-1 block w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-lg text-gray-100 focus:border-teal-500 focus:ring-teal-500 transition duration-300"></textarea>
+                            </div>
+                            <!-- Added Message Container for Dynamic Feedback -->
+                            <div id="formMessage" class="hidden text-center text-sm p-3 rounded-xl transition duration-500"></div>
+
+                            <button type="submit" id="submitBtn" class="w-full inline-flex items-center justify-center px-4 py-3 border border-transparent text-base font-medium rounded-xl shadow-lg text-gray-900 bg-teal-500 hover:bg-teal-400 transition duration-300 transform hover:scale-[1.01]">
+                                Send Inquiry
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- Contact Details -->
+                    <div class="space-y-6 md:mt-8">
+                        <div class="flex items-start p-4 bg-gray-900 rounded-xl border border-gray-700 transform hover:translate-y-[-3px] transition duration-300 hover:border-teal-500 card-glow-effect">
+                            <span class="icon-wrapper text-teal-500 mr-4 mt-1"><i data-lucide="mail" class="w-6 h-6"></i></span>
+                            <div>
+                                <p class="text-sm font-medium text-gray-400">Email Address (Click to Copy)</p>
+                                <!-- Email Button for Copy Feature (NEW) -->
+                                <button id="copyEmailBtn" class="text-lg text-gray-50 hover:text-teal-400 transition duration-300 cursor-pointer text-left focus:outline-none">syedadnan13786@gmail.com</button>
+                            </div>
+                        </div>
+                        <div class="flex items-start p-4 bg-gray-900 rounded-xl border border-gray-700 transform hover:translate-y-[-3px] transition duration-300 hover:border-teal-500 card-glow-effect">
+                            <span class="icon-wrapper text-teal-500 mr-4 mt-1"><i data-lucide="phone" class="w-6 h-6"></i></span>
+                            <div>
+                                <p class="text-sm font-medium text-gray-400">Phone Number</p>
+                                <a href="tel:8123888907" class="text-lg text-gray-50 hover:text-teal-400 transition duration-300">8123888907</a>
+                            </div>
+                        </div>
+                        <div class="flex items-start p-4 bg-gray-900 rounded-xl border border-gray-700 transform hover:translate-y-[-3px] transition duration-300 hover:border-teal-500 card-glow-effect">
+                            <span class="icon-wrapper text-teal-500 mr-4 mt-1"><i data-lucide="linkedin" class="w-6 h-6"></i></span>
+                            <div>
+                                <p class="text-sm font-medium text-gray-400">LinkedIn Profile</p>
+                                <a href="http://www.linkedin.com/in/syedadnanahmed" target="_blank" class="text-lg text-gray-50 hover:text-teal-400 transition duration-300">Syed Adnan Ahmed</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- 
+        ============================================================
+        FOOTER
+        ============================================================
+    -->
+    <footer class="bg-gray-900 py-6 border-t border-gray-700">
+        <div class="max-w-7xl mx-auto px-4 text-center text-sm text-gray-500">
+            &copy; 2024 Syed Adnan Ahmed. All rights reserved. | Built with Tailwind CSS.
+        </div>
+    </footer>
+
+
+    <!-- 
+        ============================================================
+        PROJECT MODAL STRUCTURE (Initially Hidden)
+        ============================================================
+    -->
+    <div id="projectModal" class="modal-overlay fixed inset-0 z-[100] hidden items-center justify-center p-4">
+        <div class="modal-content bg-gray-800 w-full max-w-3xl max-h-[90vh] overflow-y-auto rounded-xl shadow-2xl border border-teal-500/50 p-6 md:p-10" onclick="event.stopPropagation()">
+            
+            <!-- FIXED: Added onclick directly to the button for reliability & enforced pointer cursor -->
+            <button onclick="closeModal()" class="absolute top-4 right-4 text-gray-400 hover:text-teal-400 transition duration-300 cursor-pointer p-2 rounded-full hover:bg-gray-700" aria-label="Close Project Details">
+                <i data-lucide="x" class="w-6 h-6 pointer-events-none"></i>
+            </button>
+
+            <!-- Modal Content will be inserted here by JavaScript -->
+            <div id="modalContentBody" class="space-y-6">
+                <!-- Title, details, and stack will be dynamically populated -->
+            </div>
+        </div>
+    </div>
+
+
+    <!-- 
+        ============================================================
+        JAVASCRIPT for Icons, Scroll Animations, and MODAL Logic
+        ============================================================
+    -->
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+        
+        // --- SCROLL ANIMATION LOGIC ---
+        const sections = document.querySelectorAll('.animated-section');
+
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target); 
+                }
+            });
+        }, { 
+            rootMargin: '0px', 
+            threshold: 0.1
+        }); 
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+
+        // --- SCROLL PROGRESS INDICATOR LOGIC (NEW) ---
+        window.addEventListener('scroll', () => {
+            const progressBar = document.getElementById('progressBar');
+            // documentElement.scrollHeight gives total height of content
+            // documentElement.clientHeight gives visible height of window
+            const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = window.scrollY;
+            const progress = (scrolled / scrollHeight) * 100;
+            progressBar.style.width = progress + '%';
+        });
+
+        // --- ONE-CLICK EMAIL COPY LOGIC (NEW) ---
+        const copyEmailBtn = document.getElementById('copyEmailBtn');
+        const copyAlert = document.getElementById('copyAlert');
+        const emailToCopy = "syedadnan13786@gmail.com";
+
+        function showCopyAlert(message) {
+            copyAlert.textContent = message;
+            copyAlert.classList.add('opacity-100');
+            setTimeout(() => {
+                copyAlert.classList.remove('opacity-100');
+            }, 2000);
+        }
+
+        function fallbackCopyTextToClipboard(text) {
+            const textArea = document.createElement("textarea");
+            textArea.value = text;
+            textArea.style.position = "fixed"; 
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+
+            try {
+                // document.execCommand('copy') is needed for maximum compatibility in iframes
+                document.execCommand('copy');
+                showCopyAlert("Email copied to clipboard!");
+            } catch (err) {
+                showCopyAlert("Copy failed. Please copy manually.");
+            }
+
+            document.body.removeChild(textArea);
+        }
+
+        if (copyEmailBtn) {
+            copyEmailBtn.addEventListener('click', function() {
+                // Use navigator.clipboard.writeText if available (modern browsers)
+                if (navigator.clipboard) {
+                    navigator.clipboard.writeText(emailToCopy).then(() => {
+                        showCopyAlert("Email copied to clipboard!");
+                    }).catch(err => {
+                        // Fallback needed if permission is denied or older browser
+                        fallbackCopyTextToClipboard(emailToCopy);
+                    });
+                } else {
+                    // Fallback for older browsers or restricted environments (like iframes)
+                    fallbackCopyTextToClipboard(emailToCopy);
+                }
+            });
+        }
+
+
+        // --- PROJECT MODAL LOGIC ---
+
+        const projectData = {
+            iot: {
+                title: "IoT-Based Solar Panel Sun Tracking System",
+                techStack: ["Microcontrollers (Arduino)", "Sensors (LDR, Weather)", "Bluetooth/Wi-Fi", "Cloud Data Transmission", "C/C++"],
+                details: "This final year engineering project was designed to solve the critical problem of solar energy inefficiency due to fixed panel placement. By using a Dual Axis tracking mechanism, the system constantly monitors the position of the sun and optimizes the panel's angle both horizontally and vertically, significantly boosting power generation efficiency. The system integrates real-time data logging to the cloud, making performance monitoring seamless.",
+                keyFeatures: [
+                    "Dual-axis motor control for optimal sun alignment.",
+                    "Real-time sensor data collection (temperature, voltage).",
+                    "Wireless data transmission to a cloud platform for remote monitoring.",
+                    "Embedded system programming using Arduino/C++."
+                ],
+                image: "https://i.ibb.co/xqxnkf1Q/dual-axis-solar-tracker-with-ldr.jpg",
+                codeLink: "#" // Placeholder for GitHub/details link
+            },
+            sentiment: {
+                title: "Sentiment Analysis Engine (Internship Project)",
+                techStack: ["Python", "Machine Learning (ML)", "Natural Language Processing (NLP)", "Pandas", "Scikit-learn"],
+                details: "Developed during my internship at EasiliTech Pvt. Ltd., this project focused on leveraging machine learning to process unstructured business feedback and classify the underlying sentiment (positive, negative, neutral). This provided actionable insights for improving client relations and optimizing operational decisions based on large volumes of data.",
+                keyFeatures: [
+                    "Data preprocessing and cleaning using Pandas.",
+                    "Implementation of various ML classification models (e.g., Naive Bayes, SVM).",
+                    "Visualization of sentiment distribution across time/categories.",
+                    "Automation pipeline for handling continuous data feeds."
+                ],
+                image: "https://i.ibb.co/gZBVdtV8/sentiment-analysis.jpg",
+                codeLink: "#" // Placeholder for GitHub/details link
+            }
+        };
+
+        const modal = document.getElementById('projectModal');
+        const modalBody = document.getElementById('modalContentBody');
+        
+        // Function to close the modal (Simplified for direct call)
+        function closeModal() {
+            modal.classList.remove('open');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 300); // Match CSS transition time
+        }
+
+        // Function to open and populate the modal
+        function openModal(projectId) {
+            const data = projectData[projectId];
+            if (!data) return;
+
+            // 1. Construct the HTML content
+            const content = `
+                <div class="flex justify-between items-start mb-6">
+                    <h2 class="text-3xl md:text-4xl font-extrabold text-teal-400">${data.title}</h2>
+                </div>
+                
+                <div class="mb-6">
+                    <img src="${data.image}" alt="${data.title} image" class="w-full rounded-lg shadow-xl mb-4 object-contain" style="max-height: 400px;">
+                </div>
+
+                <p class="text-gray-300 text-lg mb-6">${data.details}</p>
+                
+                <h3 class="text-xl font-bold text-gray-50 mb-3 border-b border-gray-700 pb-2">Key Features</h3>
+                <ul class="list-disc list-inside space-y-2 text-gray-400 ml-4">
+                    ${data.keyFeatures.map(feature => `<li>${feature}</li>`).join('')}
+                </ul>
+
+                <h3 class="text-xl font-bold text-gray-50 mt-6 mb-3 border-b border-gray-700 pb-2">Technical Stack</h3>
+                <div class="flex flex-wrap gap-2">
+                    ${data.techStack.map(tech => `<span class="bg-teal-500/20 text-teal-300 text-sm font-medium px-3 py-1 rounded-full">${tech}</span>`).join('')}
+                </div>
+
+                ${data.codeLink !== '#' ? `
+                <div class="mt-8">
+                    <a href="${data.codeLink}" target="_blank" class="inline-flex items-center justify-center px-6 py-2 border border-transparent text-sm font-medium rounded-xl shadow-lg text-gray-900 bg-teal-500 hover:bg-teal-400 transition duration-300">
+                        <span class="icon-wrapper mr-2"><i data-lucide="github" class="w-4 h-4"></i></span>
+                        View Code Repository
+                    </a>
+                </div>
+                ` : ''}
+            `;
+            
+            // 2. Insert content and show modal
+            modalBody.innerHTML = content;
+            modal.classList.remove('hidden');
+            // Use requestAnimationFrame to ensure the hidden class is removed before transition starts
+            requestAnimationFrame(() => {
+                modal.classList.add('open');
+                lucide.createIcons(); // Re-initialize icons for the new content
+            });
+        }
+
+        // 3. Attach Event Listeners to project buttons
+        document.querySelectorAll('.view-project-btn').forEach(button => {
+            button.addEventListener('click', () => {
+                const projectId = button.getAttribute('data-project-id');
+                openModal(projectId);
+            });
+        });
+
+        // 4. Attach Listener to modal overlay to close on backdrop click (FIXED LOGIC)
+        modal.addEventListener('click', function(event) {
+            // Check if the click target is the modal itself (the overlay)
+            if (event.target === modal) {
+                closeModal();
+            }
+        });
+
+        // Ensure modal starts hidden
+        modal.classList.add('hidden');
+
+        // --- DYNAMIC FORM SUBMISSION LOGIC (NEW) ---
+        const form = document.getElementById('contactForm');
+        const formMessage = document.getElementById('formMessage');
+        const formspreeEndpoint = "https://formspree.io/f/mqayevgn"; // Your unique Formspree URL
+
+        form.addEventListener('submit', async function (event) {
+            event.preventDefault();
+
+            // Clear previous messages and show loading state
+            formMessage.classList.remove('hidden', 'bg-red-500/20', 'bg-teal-500/20', 'text-red-300', 'text-teal-300');
+            formMessage.textContent = 'Sending message...';
+            formMessage.classList.add('bg-gray-700/50', 'text-gray-400');
+            
+            const formData = new FormData(form);
+            const data = Object.fromEntries(formData.entries());
+
+            try {
+                const response = await fetch(formspreeEndpoint, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+
+                // Clear temporary loading state classes
+                formMessage.classList.remove('bg-gray-700/50', 'text-gray-400');
+
+                if (response.ok) {
+                    formMessage.textContent = 'Message sent successfully! I will be in touch shortly.';
+                    formMessage.classList.add('bg-teal-500/20', 'text-teal-300');
+                    form.reset();
+                } else {
+                    formMessage.textContent = 'An error occurred. Please try again or contact me directly.';
+                    formMessage.classList.add('bg-red-500/20', 'text-red-300');
+                }
+            } catch (error) {
+                // Handle network errors
+                formMessage.classList.remove('bg-gray-700/50', 'text-gray-400');
+                formMessage.textContent = 'Network error. Please try again later.';
+                formMessage.classList.add('bg-red-500/20', 'text-red-300');
+            }
+
+            // Make message visible and hide after 5 seconds
+            formMessage.classList.remove('hidden');
+            setTimeout(() => {
+                formMessage.classList.add('hidden');
+                formMessage.classList.remove('bg-teal-500/20', 'text-teal-300', 'bg-red-500/20', 'text-red-300'); // Clear classes upon hide
+            }, 5000);
+        });
+    </script>
+</body>
+</html>
