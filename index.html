@@ -1,423 +1,193 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Syed Adnan Ahmed | Software Engineer Portfolio</title>
-    <!-- SEO Meta Tags -->
-    <meta name="description" content="Syed Adnan Ahmed is a Software Engineer specializing in Full Stack Development and Machine Learning. M.Tech student with multiple professional internships.">
-    <meta name="keywords" content="Syed Adnan Ahmed, Software Engineer, M.Tech, Zenexis Solutions, Full Stack Developer, Java, Python, Bidar">
-    <meta name="author" content="Syed Adnan Ahmed">
-    
-    <meta property="og:title" content="Syed Adnan Ahmed | Software Engineer Portfolio">
-    <meta property="og:description" content="Portfolio of Syed Adnan Ahmed, featuring internships at Zenexis Solutions and EasiliTech.">
-    <meta property="og:image" content="https://placehold.co/1200x630/1f2937/34d399?text=Syed+Adnan+Ahmed+Portfolio">
-    <meta property="og:type" content="website">
-
-    <!-- Load Tailwind CSS from CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Load Lucide Icons -->
-    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
-    
-    <style>
-        html { scroll-padding-top: 5rem; font-family: 'Inter', sans-serif; }
-        body { background-color: #1a202c; color: #e2e8f0; }
-        
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-thumb { background: #2c313a; border-radius: 10px; }
-        ::-webkit-scrollbar-thumb:hover { background: #3a3f47; }
-        
-        .icon-wrapper { display: inline-flex; align-items: center; justify-content: center; }
-        
-        /* Card Styling & Hover Effects */
-        .card-glow-effect {
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 0 40px rgba(52, 211, 163, 0.05) inset; 
-            transition: all 0.3s ease-in-out;
-        }
-        .card-glow-effect:hover {
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -4px rgba(0, 0, 0, 0.3), 0 0 50px rgba(52, 211, 163, 0.2) inset;
-            border-color: #34d399;
-        }
-        
-        /* Entrance Animations */
-        .animated-section { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
-        .animated-section.visible { opacity: 1; transform: translateY(0); }
-        
-        /* Hero Background Animation */
-        @keyframes hero-shift { 0% { background-position: 0% 50%; } 33% { background-position: 50% 100%; } 66% { background-position: 100% 0%; } 100% { background-position: 0% 50%; } }
-        .hero-bg { background: linear-gradient(-45deg, #1a202c, #1f2937, #374151, #1f2937, #1a202c); background-size: 400% 400%; animation: hero-shift 20s ease infinite; }
-        
-        /* Shimmer Text */
-        @keyframes text-glow { 0%, 100% { text-shadow: 0 0 5px rgba(52, 211, 163, 0.2); } 50% { text-shadow: 0 0 15px rgba(52, 211, 163, 0.3); } }
-        .text-shimmer { animation: text-glow 4s ease-in-out infinite; }
-        
-        /* Project Modal */
-        .modal-overlay { background-color: rgba(0, 0, 0, 0.85); backdrop-filter: blur(8px); opacity: 0; transition: opacity 0.3s ease; z-index: 100; position: fixed; inset: 0; display: none; align-items: center; justify-content: center; padding: 1rem; }
-        .modal-overlay.open { display: flex; opacity: 1; }
-        .modal-content { transform: translateY(50px); transition: transform 0.3s ease, opacity 0.3s ease; opacity: 0; background: #1f2937; width: 100%; max-width: 48rem; max-height: 90vh; overflow-y: auto; border-radius: 0.75rem; position: relative; padding: 2rem; border: 1px solid rgba(52, 211, 163, 0.3); }
-        .modal-overlay.open .modal-content { transform: translateY(0); opacity: 1; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Syed Adnan Ahmed | M.Tech Computer Science Graduate</title>
+<meta name="description" content="Portfolio of Syed Adnan Ahmed, an M.Tech Computer Science graduate with experience in software development, machine learning, data analysis, web technologies, and research.">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+<style>
+html{scroll-behavior:smooth;font-family:Inter,Arial,sans-serif}
+body{background:#111827;color:#e5e7eb}
+.card{transition:.3s ease}
+.card:hover{transform:translateY(-4px);border-color:#34d399}
+</style>
 </head>
-<body class="bg-gray-900 text-gray-100 antialiased">
+<body class="bg-gray-900 text-gray-100">
+<header class="fixed top-0 left-0 right-0 z-50 bg-gray-900/95 backdrop-blur-md">
+<nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex items-center justify-between h-20">
+<a href="#home" class="text-xl sm:text-2xl font-extrabold text-emerald-400">Syed Adnan Ahmed</a>
+<div class="hidden md:flex gap-5">
+<a href="#about">About</a><a href="#skills">Skills</a><a href="#projects">Projects</a>
+<a href="#experience">Experience</a><a href="#education">Education</a><a href="#research">Research</a><a href="#contact">Contact</a>
+</div>
+</div>
+</nav>
+</header>
 
-    <!-- Copy Notification -->
-    <div id="copyAlert" class="fixed top-4 left-1/2 transform -translate-x-1/2 z-[110] px-4 py-2 bg-teal-500 text-gray-900 rounded-lg shadow-xl opacity-0 transition-opacity duration-300">
-        Email copied to clipboard!
-    </div>
+<main class="pt-20">
+<section id="home" class="min-h-screen flex items-center justify-center text-center px-4">
+<div class="max-w-4xl">
+<p class="text-emerald-400 font-semibold uppercase tracking-widest mb-4">M.Tech Computer Science Graduate</p>
+<h1 class="text-5xl sm:text-6xl font-extrabold mb-5">Syed Adnan Ahmed</h1>
+<p class="text-xl sm:text-2xl text-emerald-300 mb-5">Software & Technology Professional</p>
+<p class="max-w-2xl mx-auto text-gray-300 leading-relaxed mb-8">Interested in software development, machine learning, data analysis and practical technology solutions.</p>
+<div class="flex flex-wrap justify-center gap-4">
+<a href="#projects" class="px-7 py-3 rounded-xl bg-emerald-400 text-gray-900 font-semibold">View My Work</a>
+<a href="#contact" class="px-7 py-3 rounded-xl border border-emerald-400/50 text-emerald-300">Contact Me</a>
+</div>
+<div class="mt-8 flex justify-center gap-6">
+<a href="https://www.linkedin.com/in/syedadnanahmed" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+<a href="https://github.com/syedadnan-7" target="_blank" rel="noopener noreferrer">GitHub</a>
+</div>
+</div>
+</section>
 
-    <!-- Navigation -->
-    <header class="fixed top-0 left-0 right-0 z-50 bg-gray-900/95 backdrop-blur-md shadow-lg">
-        <div id="progressBar" class="fixed top-0 left-0 h-1 bg-teal-500 z-[60]" style="width: 0%;"></div>
-        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-20">
-                <a href="#home" class="text-2xl font-extrabold text-teal-500 hover:text-teal-400 transition duration-300">Syed Adnan Ahmed</a>
-                <div class="hidden md:flex space-x-4">
-                    <a href="#about" class="nav-link text-sm font-medium text-gray-300 hover:text-teal-500 transition p-2 rounded-lg">About</a>
-                    <a href="#skills" class="nav-link text-sm font-medium text-gray-300 hover:text-teal-500 transition p-2 rounded-lg">Skills</a>
-                    <a href="#projects" class="nav-link text-sm font-medium text-gray-300 hover:text-teal-500 transition p-2 rounded-lg">Projects</a>
-                    <a href="#experience" class="nav-link text-sm font-medium text-gray-300 hover:text-teal-500 transition p-2 rounded-lg">Experience</a>
-                    <a href="#education" class="nav-link text-sm font-medium text-gray-300 hover:text-teal-500 transition p-2 rounded-lg">Education</a>
-                    <a href="#contact" class="nav-link text-sm font-medium text-gray-300 hover:text-teal-500 transition p-2 rounded-lg">Contact</a>
-                </div>
-            </div>
-        </nav>
-    </header>
+<section id="about" class="py-20 px-4 md:px-8 bg-gray-800">
+<div class="max-w-6xl mx-auto">
+<h2 class="text-4xl font-extrabold text-emerald-400 mb-10 text-center">About Me</h2>
+<div class="max-w-4xl mx-auto space-y-5 text-lg text-gray-300 leading-relaxed">
+<p>I am an M.Tech Computer Science graduate with a foundation in software development, machine learning, data analysis and web technologies.</p>
+<p>I have gained practical exposure through software engineering and data science internships, academic projects and hands-on development work. My work includes building web applications, working with databases, analysing data and developing machine-learning-based solutions.</p>
+<p>I have also published research papers in areas related to machine learning and predictive analytics. I am currently seeking opportunities where I can apply my technical foundation, continue learning and contribute to real-world software and technology projects.</p>
+</div>
+</div>
+</section>
 
-    <main>
-        <!-- Hero Section -->
-        <section id="home" class="hero-bg flex items-center justify-center pt-24 pb-12 text-center px-4 md:px-8">
-            <div class="max-w-4xl mx-auto animated-section" style="transition-delay: 0.1s;">
-                <div class="mx-auto w-32 h-32 bg-gray-700 rounded-full flex items-center justify-center overflow-hidden mb-6 shadow-2xl border-4 border-teal-500/50 transform hover:scale-105 transition duration-500">
-                    <span class="text-4xl text-gray-400">SA</span>
-                </div>
-                <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight text-gray-50 mb-4 text-shimmer">Syed Adnan Ahmed</h1>
-                <p class="text-xl sm:text-2xl font-light text-teal-300 mb-8">Software Engineer | Full Stack Developer | Data Scientist</p>
-                <div class="flex justify-center">
-                    <a href="#projects" class="inline-flex items-center px-8 py-3 rounded-xl shadow-lg text-gray-900 bg-teal-500 hover:bg-teal-400 transition duration-300 transform hover:scale-105 font-medium">
-                        <i data-lucide="code-slash" class="w-5 h-5 mr-2"></i>View My Work
-                    </a>
-                </div>
-                <div class="mt-10 flex justify-center space-x-6">
-                    <a href="http://www.linkedin.com/in/syedadnanahmed" target="_blank" class="text-gray-400 hover:text-teal-500 transition duration-300 transform hover:scale-110"><i data-lucide="linkedin" class="w-6 h-6"></i></a>
-                    <a href="https://github.com/syedadnan-7" target="_blank" class="text-gray-400 hover:text-teal-500 transition duration-300 transform hover:scale-110"><i data-lucide="github" class="w-6 h-6"></i></a>
-                </div>
-            </div>
-        </section>
+<section id="skills" class="py-20 px-4 md:px-8">
+<div class="max-w-6xl mx-auto">
+<h2 class="text-4xl font-extrabold text-emerald-400 mb-12 text-center">Technical Skills</h2>
+<div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+<div class="bg-gray-800 p-6 rounded-2xl border border-gray-700 card"><h3 class="text-xl font-semibold mb-4">Programming</h3><p>Python, JavaScript</p></div>
+<div class="bg-gray-800 p-6 rounded-2xl border border-gray-700 card"><h3 class="text-xl font-semibold mb-4">AI & Data</h3><p>Machine Learning, Artificial Intelligence, Data Analysis</p></div>
+<div class="bg-gray-800 p-6 rounded-2xl border border-gray-700 card"><h3 class="text-xl font-semibold mb-4">Database</h3><p>SQL, MySQL</p></div>
+<div class="bg-gray-800 p-6 rounded-2xl border border-gray-700 card"><h3 class="text-xl font-semibold mb-4">Web</h3><p>HTML, CSS, JavaScript</p></div>
+</div>
+</div>
+</section>
 
-        <!-- About Section -->
-        <section id="about" class="py-20 px-4 md:px-8 bg-gray-800 border-t border-gray-700">
-            <div class="max-w-6xl mx-auto animated-section" style="transition-delay: 0.3s;">
-                <h2 class="text-4xl font-extrabold text-teal-500 mb-10 text-center">About Me</h2>
-                <div class="grid md:grid-cols-3 gap-10 items-center">
-                    <div class="md:col-span-2 space-y-4 text-lg text-gray-300 leading-relaxed">
-                        <p>I am Syed Adnan Ahmed, a Software Engineer and current Master's student in Computer Science. I am building a career focused on developing high-performance software and data-driven solutions.</p>
-                        <p>Through my recent role at Zenexis Solutions as a Software Engineering Intern and my prior focus on Data Science at EasiliTech**, I have developed a strong ability to solve complex technical challenges across the full software stack.</p>
-                        <p>I aim to apply my academic foundation and practical experience in Java, SQL, and Machine Learning to build innovative systems that deliver measurable real-world impact.</p>
-                    </div>
-                    <div class="md:col-span-1 p-6 bg-gray-900 rounded-2xl border border-teal-500/20 card-glow-effect">
-                        <div class="text-center">
-                            <i data-lucide="layers-3" class="w-10 h-10 text-teal-500 mx-auto mb-4"></i>
-                            <p class="text-xl font-bold mb-2">Key Domains</p>
-                            <ul class="text-sm space-y-3 text-gray-400 text-left mx-auto max-w-fit">
-                                <li class="flex items-center"><i data-lucide="cpu" class="w-4 h-4 mr-2 text-teal-500"></i> Software Engineering</li>
-                                <li class="flex items-center"><i data-lucide="database" class="w-4 h-4 mr-2 text-teal-500"></i> Full Stack Development</li>
-                                <li class="flex items-center"><i data-lucide="brain" class="w-4 h-4 mr-2 text-teal-500"></i> Data Science & ML</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+<section id="projects" class="py-20 px-4 md:px-8 bg-gray-800">
+<div class="max-w-6xl mx-auto">
+<h2 class="text-4xl font-extrabold text-emerald-400 mb-12 text-center">Projects</h2>
+<div class="space-y-7">
 
-        <!-- Skills Section -->
-        <section id="skills" class="py-20 px-4 md:px-8 border-t border-gray-700">
-            <div class="max-w-6xl mx-auto animated-section" style="transition-delay: 0.5s;">
-                <h2 class="text-4xl font-extrabold text-teal-500 mb-10 text-center">Technical Expertise</h2>
-                <div class="grid md:grid-cols-3 gap-8">
-                    <div class="bg-gray-800 p-6 rounded-2xl border border-gray-700 card-glow-effect">
-                        <h3 class="text-2xl font-semibold mb-4 text-teal-300 flex items-center"><i data-lucide="terminal" class="w-6 h-6 mr-3"></i>Languages</h3>
-                        <ul class="space-y-3 text-gray-300">
-                            <li>Core Java / J2EE</li>
-                            <li>Python / SQL (PL/SQL)</li>
-                            <li>C Programming</li>
-                        </ul>
-                    </div>
-                    <div class="bg-gray-800 p-6 rounded-2xl border border-gray-700 card-glow-effect">
-                        <h3 class="text-2xl font-semibold mb-4 text-teal-300 flex items-center"><i data-lucide="layout-grid" class="w-6 h-6 mr-3"></i>Web Tech</h3>
-                        <ul class="space-y-3 text-gray-300">
-                            <li>HTML5 / CSS3 / Bootstrap</li>
-                            <li>JavaScript (DOM Manipulation)</li>
-                        </ul>
-                    </div>
-                    <div class="bg-gray-800 p-6 rounded-2xl border border-gray-700 card-glow-effect">
-                        <h3 class="text-2xl font-semibold mb-4 text-teal-300 flex items-center"><i data-lucide="package" class="w-6 h-6 mr-3"></i>Frameworks</h3>
-                        <ul class="space-y-3 text-gray-300">
-                            <li>Spring / Hibernate</li>
-                            <li>Microsoft Office Suite</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
+<article class="bg-gray-900 border border-emerald-400/30 rounded-3xl p-7 card">
+<span class="text-emerald-300">M.Tech Project · Feb 2026 – Jul 2026</span>
+<h3 class="text-2xl md:text-3xl font-bold mt-3 mb-3">Crime Analysis and Prediction System Using Machine Learning</h3>
+<p class="text-gray-300 leading-relaxed mb-4">Developed a machine-learning-based system to analyse historical crime data, identify crime patterns and predict crime categories using Support Vector Machine (SVM). The web application includes crime complaint registration, authentication, email notifications, database integration and analytical visualisations.</p>
+<p class="text-emerald-300">Python · Machine Learning · SVM · Flask · MySQL · HTML · CSS · JavaScript</p>
+<p class="mt-5"><a href="https://github.com/syedadnan-7" target="_blank" rel="noopener noreferrer" class="text-emerald-300">GitHub →</a></p>
+</article>
 
-        <!-- Projects Section -->
-        <section id="projects" class="py-20 px-4 md:px-8 bg-gray-800 border-t border-gray-700">
-            <div class="max-w-6xl mx-auto animated-section">
-                <h2 class="text-4xl font-extrabold text-teal-500 mb-12 text-center">Notable Projects</h2>
-                <div class="space-y-12">
-                    <!-- Project 1 -->
-                    <div class="bg-gray-900 border border-teal-500/30 rounded-3xl overflow-hidden shadow-2xl p-6 md:p-10 transform hover:translate-y-[-8px] transition duration-300 card-glow-effect">
-                        <div class="grid md:grid-cols-2 gap-8 items-center">
-                            <div class="w-full h-auto rounded-xl overflow-hidden shadow-lg border border-gray-700 p-2 bg-gray-900 flex justify-center items-center">
-                                <img src="https://i.ibb.co/xqxnkf1Q/dual-axis-solar-tracker-with-ldr.jpg" alt="Solar Project" class="w-full h-full object-contain">
-                            </div>
-                            <div class="space-y-4">
-                                <span class="text-sm font-medium text-teal-400 bg-teal-500/10 px-3 py-1 rounded-full">IoT & Embedded</span>
-                                <h3 class="text-3xl font-bold text-gray-50">IOT Solar Tracking System</h3>
-                                <p class="text-gray-300 leading-relaxed">A dual-axis solar tracking system built with Arduino. Maximizes solar panel efficiency with real-time cloud monitoring.</p>
-                                <button onclick="openModal('iot')" class="mt-4 px-6 py-2 rounded-full text-gray-900 bg-teal-500 hover:bg-teal-400 font-medium transition duration-300">View Project Details</button>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Project 2 -->
-                    <div class="bg-gray-900 border border-teal-500/30 rounded-3xl overflow-hidden shadow-2xl p-6 md:p-10 transform hover:translate-y-[-8px] transition duration-300 card-glow-effect">
-                        <div class="grid md:grid-cols-2 gap-8 items-center">
-                            <div class="space-y-4 md:order-1 order-2">
-                                <span class="text-sm font-medium text-teal-400 bg-teal-500/10 px-3 py-1 rounded-full">Data Science & ML</span>
-                                <h3 class="text-3xl font-bold text-gray-50">Sentiment Analysis Engine</h3>
-                                <p class="text-gray-300 leading-relaxed">Python-based engine utilizing NLP to classify business feedback sentiment accurately.</p>
-                                <button onclick="openModal('sentiment')" class="mt-4 px-6 py-2 rounded-full text-gray-900 bg-teal-500 hover:bg-teal-400 font-medium transition duration-300">View Project Details</button>
-                            </div>
-                            <div class="w-full h-auto rounded-xl overflow-hidden shadow-lg border border-gray-700 p-2 bg-gray-900 flex justify-center items-center order-1 md:order-2">
-                                <img src="https://i.ibb.co/gZBVdtV8/sentiment-analysis.jpg" alt="Sentiment Analysis" class="w-full h-full object-contain">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+<article class="bg-gray-900 border border-gray-700 rounded-3xl p-7 card">
+<span class="text-emerald-300">Data Science & RPA Internship Project</span>
+<h3 class="text-2xl md:text-3xl font-bold mt-3 mb-3">Sentiment Analysis Engine</h3>
+<p class="text-gray-300 leading-relaxed mb-4">Developed a Python-based sentiment analysis solution to process text feedback and categorise sentiment into positive, negative and neutral classes using natural language processing and machine learning techniques.</p>
+<p class="text-emerald-300">Python · NLP · Pandas · Scikit-learn</p>
+</article>
 
-        <!-- Experience Section -->
-        <section id="experience" class="py-20 px-4 md:px-8 border-t border-gray-700">
-            <div class="max-w-4xl mx-auto animated-section">
-                <h2 class="text-4xl font-extrabold text-teal-500 mb-12 text-center">Work Experience</h2>
-                <div class="space-y-8">
-                    <!-- Zenexis -->
-                    <div class="p-6 bg-gray-900 rounded-xl border border-teal-500/30 card-glow-effect">
-                        <div class="grid md:grid-cols-4 gap-4 items-start">
-                            <div class="md:col-span-1"><p class="text-sm font-semibold uppercase tracking-wider text-teal-400">Sept 2025 – Dec 2025</p></div>
-                            <div class="md:col-span-3">
-                                <h3 class="text-2xl font-bold text-gray-50 flex items-center mb-1"><i data-lucide="briefcase" class="w-5 h-5 mr-2 text-teal-500"></i> Software Engineering Intern</h3>
-                                <p class="text-lg text-gray-300 mb-2">Zenexis Solutions Private Limited, Bidar</p>
-                                <p class="text-sm text-gray-400">Actively contributed to software development lifecycles and problem-solving initiatives. Gained hands-on experience in a professional engineering environment.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- EasiliTech -->
-                    <div class="p-6 bg-gray-900 rounded-xl border border-gray-700 card-glow-effect">
-                        <div class="grid md:grid-cols-4 gap-4 items-start">
-                            <div class="md:col-span-1"><p class="text-sm font-semibold uppercase tracking-wider text-teal-400">Aug 2023 – Sept 2023</p></div>
-                            <div class="md:col-span-3">
-                                <h3 class="text-2xl font-bold text-gray-50 flex items-center mb-1"><i data-lucide="briefcase" class="w-5 h-5 mr-2 text-teal-500"></i> Data Science & RPA Intern</h3>
-                                <p class="text-lg text-gray-300 mb-2">EasiliTech Pvt. Ltd., Bangalore</p>
-                                <p class="text-sm text-gray-400">Developed a Sentiment Analysis engine using Python ML algorithms to extract insights from business data.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+<article class="bg-gray-900 border border-gray-700 rounded-3xl p-7 card">
+<span class="text-emerald-300">IoT Project · Oct 2023 – Apr 2024</span>
+<h3 class="text-2xl md:text-3xl font-bold mt-3 mb-3">IoT-Based Solar Panel Sun Tracking Dual Axis with Weather Sensor</h3>
+<p class="text-gray-300 leading-relaxed mb-4">Built a dual-axis solar panel tracking system designed to improve panel orientation for energy generation. Integrated temperature and voltage sensing with wireless connectivity for monitoring and data transmission.</p>
+<p class="text-emerald-300">IoT · Arduino · Sensors · Bluetooth · Wi-Fi · Cloud Monitoring</p>
+</article>
 
-        <!-- Education Section -->
-        <section id="education" class="py-20 px-4 md:px-8 bg-gray-800 border-t border-gray-700">
-            <div class="max-w-4xl mx-auto animated-section">
-                <h2 class="text-4xl font-extrabold text-teal-500 mb-12 text-center">Education</h2>
-                <div class="space-y-8">
-                    <!-- M.Tech Entry -->
-                    <div class="p-6 bg-gray-900 rounded-xl border border-teal-500/30 card-glow-effect">
-                        <div class="grid md:grid-cols-4 gap-4 items-start">
-                            <div class="md:col-span-1"><p class="text-sm font-semibold uppercase tracking-wider text-teal-400">2024 – Present</p></div>
-                            <div class="md:col-span-3">
-                                <h3 class="text-2xl font-bold text-gray-50 flex items-center mb-1"><i data-lucide="graduation-cap" class="w-5 h-5 mr-2 text-teal-500"></i> M.Tech in Computer Science & Engineering</h3>
-                                <p class="text-lg text-gray-300">Guru Nanak Dev Engineering College, Bidar (VTU)</p>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- B.E. Entry -->
-                    <div class="p-6 bg-gray-900 rounded-xl border border-gray-700 card-glow-effect">
-                        <div class="grid md:grid-cols-4 gap-4 items-start">
-                            <div class="md:col-span-1"><p class="text-sm font-semibold uppercase tracking-wider text-teal-400">June 2024</p></div>
-                            <div class="md:col-span-3">
-                                <h3 class="text-2xl font-bold text-gray-50 flex items-center mb-1"><i data-lucide="graduation-cap" class="w-5 h-5 mr-2 text-teal-500"></i> B.E. Computer Science</h3>
-                                <p class="text-lg text-gray-300">Guru Nanak Dev Engineering College, Bidar (VTU)</p>
-                                <p class="text-sm text-gray-400">CGPA: 6.1/10</p>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- 12th PUC Entry -->
-                    <div class="p-6 bg-gray-900 rounded-xl border border-gray-700 card-glow-effect">
-                        <div class="grid md:grid-cols-4 gap-4 items-start">
-                            <div class="md:col-span-1"><p class="text-sm font-semibold uppercase tracking-wider text-teal-400">June 2020</p></div>
-                            <div class="md:col-span-3">
-                                <h3 class="text-2xl font-bold text-gray-50 flex items-center mb-1"><i data-lucide="graduation-cap" class="w-5 h-5 mr-2 text-teal-500"></i> 12th PUC</h3>
-                                <p class="text-lg text-gray-300">DPUE, Karnataka</p>
-                                <p class="text-sm text-gray-400">Percentage: 55.16%</p>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- 10th CBSE Entry -->
-                    <div class="p-6 bg-gray-900 rounded-xl border border-gray-700 card-glow-effect">
-                        <div class="grid md:grid-cols-4 gap-4 items-start">
-                            <div class="md:col-span-1"><p class="text-sm font-semibold uppercase tracking-wider text-teal-400">June 2017</p></div>
-                            <div class="md:col-span-3">
-                                <h3 class="text-2xl font-bold text-gray-50 flex items-center mb-1"><i data-lucide="graduation-cap" class="w-5 h-5 mr-2 text-teal-500"></i> 10th CBSE</h3>
-                                <p class="text-lg text-gray-300">Central Board of Secondary Education (CBSE)</p>
-                                <p class="text-sm text-gray-400">CGPA: 7.6/10</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+</div>
+</div>
+</section>
 
-        <!-- Contact Section -->
-        <section id="contact" class="py-20 px-4 md:px-8 bg-gray-900 border-t border-gray-700">
-            <div class="max-w-4xl mx-auto animated-section">
-                <h2 class="text-4xl font-extrabold text-teal-500 mb-12 text-center">Get In Touch</h2>
-                <div class="grid md:grid-cols-2 gap-10">
-                    <div class="bg-gray-800 p-8 rounded-2xl border border-teal-500/20 card-glow-effect">
-                        <h3 class="text-2xl font-bold mb-6 text-gray-50">Send a Message</h3>
-                        <form id="contactForm" class="space-y-4">
-                            <div><label class="block text-sm text-gray-400">Name</label><input type="text" name="Name" required class="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-lg text-gray-100 focus:border-teal-500 outline-none"></div>
-                            <div><label class="block text-sm text-gray-400">Email</label><input type="email" name="Email" required class="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-lg text-gray-100 focus:border-teal-500 outline-none"></div>
-                            <div><label class="block text-sm text-gray-400">Message</label><textarea name="Message" rows="4" required class="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-lg text-gray-100 focus:border-teal-500 outline-none"></textarea></div>
-                            <div id="formMessage" class="hidden text-center text-sm p-3 rounded-xl mb-4"></div>
-                            <button type="submit" class="w-full py-3 rounded-xl text-gray-900 bg-teal-500 hover:bg-teal-400 font-bold transition">Send Inquiry</button>
-                        </form>
-                    </div>
-                    <div class="space-y-6">
-                        <div class="flex items-start p-4 bg-gray-800 rounded-xl border border-gray-700 hover:border-teal-500 transition duration-300">
-                            <i data-lucide="mail" class="w-6 h-6 text-teal-500 mr-4"></i>
-                            <div><p class="text-sm text-gray-400">Email (Click to Copy)</p><button id="copyEmailBtn" class="text-lg text-gray-50 hover:text-teal-400">syedadnan13786@gmail.com</button></div>
-                        </div>
-                        <!-- LinkedIn Contact Card -->
-                        <div class="flex items-start p-4 bg-gray-800 rounded-xl border border-gray-700 hover:border-teal-500 transition duration-300">
-                            <i data-lucide="linkedin" class="w-6 h-6 text-teal-500 mr-4"></i>
-                            <div>
-                                <p class="text-sm text-gray-400">LinkedIn Profile</p>
-                                <a href="http://www.linkedin.com/in/syedadnanahmed" target="_blank" class="text-lg text-gray-50 hover:text-teal-400">Syed Adnan Ahmed</a>
-                            </div>
-                        </div>
-                        <div class="flex items-start p-4 bg-gray-800 rounded-xl border border-gray-700 hover:border-teal-500 transition duration-300">
-                            <i data-lucide="phone" class="w-6 h-6 text-teal-500 mr-4"></i>
-                            <div><p class="text-sm text-gray-400">Phone</p><a href="tel:+918123888907" class="text-lg text-teal-500 hover:text-teal-400">+91 8123888907</a></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
+<section id="experience" class="py-20 px-4 md:px-8">
+<div class="max-w-6xl mx-auto">
+<h2 class="text-4xl font-extrabold text-emerald-400 mb-12 text-center">Experience</h2>
+<div class="space-y-6">
+<div class="p-7 bg-gray-800 rounded-2xl border border-gray-700 card">
+<p class="text-emerald-300">Sept 2025 – Dec 2025</p>
+<h3 class="text-2xl font-bold mt-2">Software Engineering Intern</h3>
+<p class="text-lg text-gray-300">Zenexis Solutions Private Limited, Bidar</p>
+<p class="text-gray-400 mt-3">Gained practical exposure to software development workflows, problem solving and professional engineering practices.</p>
+</div>
+<div class="p-7 bg-gray-800 rounded-2xl border border-gray-700 card">
+<p class="text-emerald-300">Aug 2023 – Sept 2023</p>
+<h3 class="text-2xl font-bold mt-2">Data Science & RPA Intern</h3>
+<p class="text-lg text-gray-300">EasiliTech</p>
+<p class="text-gray-400 mt-3">Gained practical exposure to Python, data processing, data science concepts and automation-oriented tasks.</p>
+</div>
+</div>
+</div>
+</section>
 
-    <footer class="bg-gray-900 py-6 border-t border-gray-700 text-center text-sm text-gray-500">
-        &copy; 2024 Syed Adnan Ahmed. All rights reserved.
-    </footer>
+<section id="education" class="py-20 px-4 md:px-8 bg-gray-800">
+<div class="max-w-5xl mx-auto">
+<h2 class="text-4xl font-extrabold text-emerald-400 mb-12 text-center">Education</h2>
+<div class="space-y-6">
+<div class="p-7 bg-gray-900 rounded-2xl border border-emerald-400/25 card">
+<h3 class="text-2xl font-bold">M.Tech in Computer Science & Engineering</h3>
+<p class="text-emerald-300 mt-2">Visvesvaraya Technological University</p>
+<p class="text-gray-400 mt-2">Completed · 2026</p>
+</div>
+<div class="p-7 bg-gray-900 rounded-2xl border border-gray-700 card">
+<h3 class="text-2xl font-bold">B.E. in Computer Science & Engineering</h3>
+<p class="text-emerald-300 mt-2">Visvesvaraya Technological University</p>
+<p class="text-gray-400 mt-2">Completed · 2024</p>
+</div>
+<div class="p-7 bg-gray-900 rounded-2xl border border-gray-700 card">
+<h3 class="text-2xl font-bold">12th / PUC</h3>
+<p class="text-emerald-300 mt-2">Pre-University Education</p>
+<p class="text-gray-400 mt-2">Completed · 2020</p>
+</div>
+<div class="p-7 bg-gray-900 rounded-2xl border border-gray-700 card">
+<h3 class="text-2xl font-bold">10th / SSLC</h3>
+<p class="text-emerald-300 mt-2">Secondary School Education</p>
+<p class="text-gray-400 mt-2">Completed · 2017</p>
+</div>
+</div>
+</div>
+</section>
 
-    <!-- Project Modal Structure -->
-    <div id="projectModal" class="modal-overlay">
-        <div class="modal-content">
-            <button onclick="closeModal()" class="absolute top-4 right-4 text-gray-400 hover:text-teal-400"><i data-lucide="x" class="w-6 h-6"></i></button>
-            <div id="modalContentBody"></div>
-        </div>
-    </div>
+<section id="research" class="py-20 px-4 md:px-8">
+<div class="max-w-6xl mx-auto">
+<h2 class="text-4xl font-extrabold text-emerald-400 mb-12 text-center">Research Publications</h2>
+<div class="grid md:grid-cols-2 gap-7">
+<article class="bg-gray-800 rounded-2xl p-7 border border-gray-700 card">
+<h3 class="text-2xl font-bold mb-4">Tourist Behaviour Prediction with Machine Learning</h3>
+<p class="text-gray-400 leading-relaxed mb-5">Research work focused on applying machine learning techniques to analyse and predict tourist behaviour using data-driven methods.</p>
+<a href="https://www.irjmets.com/paperdetail.php?paperId=642050fc48c7f5eb500fa63f7c32e719" target="_blank" rel="noopener noreferrer" class="text-emerald-300">View Publication →</a>
+</article>
+<article class="bg-gray-800 rounded-2xl p-7 border border-gray-700 card">
+<h3 class="text-2xl font-bold mb-4">An Intelligent AI-Driven Decision Support Framework for Advanced Crime Prediction Using Support Vector Machine</h3>
+<p class="text-gray-400 leading-relaxed mb-5">Research work related to machine-learning-based crime prediction and analytical approaches for identifying patterns in historical crime data.</p>
+<a href="https://www.jetir.org/view?paper=JETIR2607088" target="_blank" rel="noopener noreferrer" class="text-emerald-300">View Publication →</a>
+</article>
+</div>
+</div>
+</section>
 
-    <script>
-        lucide.createIcons();
-        
-        // Scroll Animations
-        const observer = new IntersectionObserver(entries => {
-            entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
-        }, { threshold: 0.1 });
-        document.querySelectorAll('.animated-section').forEach(s => observer.observe(s));
+<section id="contact" class="py-20 px-4 md:px-8 bg-gray-800">
+<div class="max-w-6xl mx-auto">
+<h2 class="text-4xl font-extrabold text-emerald-400 mb-12 text-center">Let's Connect</h2>
+<div class="grid md:grid-cols-2 gap-8">
+<div class="bg-gray-900 p-7 rounded-2xl border border-gray-700">
+<h3 class="text-2xl font-bold mb-5">Get in Touch</h3>
+<p class="text-gray-400 mb-5">I am currently open to software and technology opportunities and available to start immediately.</p>
+<p class="mb-3"><strong>Email:</strong> <a class="text-emerald-300" href="mailto:syedadnan13786@gmail.com">syedadnan13786@gmail.com</a></p>
+<p class="mb-3"><strong>LinkedIn:</strong> <a class="text-emerald-300" href="https://www.linkedin.com/in/syedadnanahmed" target="_blank" rel="noopener noreferrer">linkedin.com/in/syedadnanahmed</a></p>
+<p><strong>GitHub:</strong> <a class="text-emerald-300" href="https://github.com/syedadnan-7" target="_blank" rel="noopener noreferrer">github.com/syedadnan-7</a></p>
+</div>
+<div class="bg-gray-900 p-7 rounded-2xl border border-gray-700">
+<h3 class="text-2xl font-bold mb-5">Professional Focus</h3>
+<p class="text-gray-400 leading-relaxed">Software development, machine learning, data analysis, SQL/database technologies and web development.</p>
+</div>
+</div>
+</div>
+</section>
+</main>
 
-        // Scroll Progress
-        window.addEventListener('scroll', () => {
-            const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
-            document.getElementById('progressBar').style.width = scrollPercent + '%';
-        });
-
-        // Email Copy
-        document.getElementById('copyEmailBtn').addEventListener('click', () => {
-            const email = "syedadnan13786@gmail.com";
-            const textArea = document.createElement("textarea");
-            textArea.value = email; document.body.appendChild(textArea);
-            textArea.select(); document.execCommand('copy');
-            document.body.removeChild(textArea);
-            const alert = document.getElementById('copyAlert');
-            alert.classList.add('opacity-100');
-            setTimeout(() => alert.classList.remove('opacity-100'), 2000);
-        });
-
-        // Modal Logic
-        const modal = document.getElementById('projectModal');
-        const modalBody = document.getElementById('modalContentBody');
-        const projectData = {
-            iot: {
-                title: "IoT-Based Solar Tracker",
-                details: "Built a dual-axis tracking system that optimizes solar panel orientation using LDR sensors. Developed embedded C code for Arduino and used cloud platforms for real-time monitoring.",
-                tech: ["Arduino", "Embedded C", "IoT", "Cloud Monitoring"],
-                image: "https://i.ibb.co/xqxnkf1Q/dual-axis-solar-tracker-with-ldr.jpg"
-            },
-            sentiment: {
-                title: "Sentiment Analysis Engine",
-                details: "Created a Python engine to analyze business sentiments. Used NLP libraries to process text feedback and categorize them into positive, negative, and neutral sentiments.",
-                tech: ["Python", "NLP", "Pandas", "Scikit-Learn"],
-                image: "https://i.ibb.co/gZBVdtV8/sentiment-analysis.jpg"
-            }
-        };
-
-        function openModal(id) {
-            const data = projectData[id];
-            modalBody.innerHTML = `
-                <h2 class="text-3xl font-bold text-teal-400 mb-4">${data.title}</h2>
-                <img src="${data.image}" class="w-full rounded-lg mb-4 h-64 object-contain bg-gray-900 border border-gray-700">
-                <p class="text-gray-300 mb-4 text-lg">${data.details}</p>
-                <div class="flex flex-wrap gap-2">
-                    ${data.tech.map(t => `<span class="px-3 py-1 bg-teal-500/20 text-teal-300 rounded-full text-sm font-medium border border-teal-500/30">${t}</span>`).join('')}
-                </div>
-                <div class="mt-8">
-                    <a href="https://github.com/syedadnan-7/syedadnan-portfolio" target="_blank" class="inline-flex items-center px-6 py-2 rounded-xl bg-teal-500 text-gray-900 font-bold hover:bg-teal-400 transition">
-                        <i data-lucide="github" class="w-4 h-4 mr-2"></i> View Code Repository
-                    </a>
-                </div>
-            `;
-            modal.classList.add('open');
-            lucide.createIcons();
-        }
-
-        function closeModal() { modal.classList.remove('open'); }
-        modal.onclick = (e) => { if (e.target === modal) closeModal(); };
-
-        // Contact Form Submission
-        document.getElementById('contactForm').addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const msg = document.getElementById('formMessage');
-            msg.classList.remove('hidden');
-            msg.textContent = 'Sending...';
-            const res = await fetch("https://formspree.io/f/mqayevgn", {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(Object.fromEntries(new FormData(e.target)))
-            });
-            if (res.ok) {
-                msg.textContent = 'Message sent successfully!';
-                msg.className = 'text-center text-sm p-3 rounded-xl bg-teal-500/20 text-teal-300 mb-4';
-                e.target.reset();
-            } else {
-                msg.textContent = 'Error occurred. Please try again.';
-                msg.className = 'text-center text-sm p-3 rounded-xl bg-red-500/20 text-red-300 mb-4';
-            }
-        });
-    </script>
+<footer class="bg-gray-900 py-7 border-t border-gray-700 text-center text-sm text-gray-500">
+&copy; 2026 Syed Adnan Ahmed. All rights reserved.
+</footer>
+<script>lucide.createIcons();</script>
 </body>
 </html>
